@@ -12,7 +12,7 @@ function Currency() {
 
   const app = async () => {
     const post = await axios.get(
-      `${BASE_URL}?apikey=${key}&base_currency${fromCurrency}`
+      `${BASE_URL}?apikey=${key}&base_currency=${fromCurrency}`
     );
     const res = post.data.data[toCurrency] * amount;
     setResult(res);
@@ -21,7 +21,7 @@ function Currency() {
   return (
     <div className="currency-body">
       <div className="currency-title">
-        <h1>Hosgeldiniz</h1>
+        <h1 style={{ fontFamily: "inherit" }}>CURRENCY</h1>
       </div>
       <div className="currency-content">
         <div className="from-currency">
@@ -34,9 +34,9 @@ function Currency() {
           </div>
           <div className="section">
             <select onChange={(e) => setFrom(e.target.value)}>
-              <option value="">EUR</option>
-              <option value="">USD</option>
-              <option value="">TRY</option>
+              <option value="USD">USD</option>
+              <option value="EUR">EUR</option>
+              <option value="TRY">TRY</option>
             </select>
           </div>
         </div>
@@ -46,16 +46,16 @@ function Currency() {
         <div className="to currency">
           <div className="input">
             <input
-              value={result}
+              value={result.toFixed(3)}
               onChange={(e) => setResult(e.target.value)}
               type="number"
             />
           </div>
           <div className="section">
             <select onChange={(e) => setTo(e.target.value)} name="" id="">
-              <option value="">TRY</option>
-              <option value="">EUR</option>
-              <option value="">USD</option>
+              <option value="TRY">TRY</option>
+              <option value="EUR">EUR</option>
+              <option value="USD">USD</option>
             </select>
           </div>
         </div>
